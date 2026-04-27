@@ -29,15 +29,16 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-green-100">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 text-green-400 flex-shrink-0" />
-                Emiliano Zapata, Morelos, México
+                Av. Temixco y No Reelección #1, Col. Centro,<br />
+                Emiliano Zapata, Morelos
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-green-400 flex-shrink-0" />
-                (777) 000-0000
+                (777) 368-0092
               </li>
               <li className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-green-400 flex-shrink-0" />
-                Turno Matutino: 7:00 – 13:30 hrs
+                Turno Matutino: 7:00 – 13:10 hrs
               </li>
             </ul>
           </div>

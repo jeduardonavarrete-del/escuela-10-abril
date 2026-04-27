@@ -1,4 +1,4 @@
-import { Target, Eye, BookOpen, Award } from 'lucide-react'
+import { Target, Eye, BookOpen, Award, Phone, MapPin, Clock, User } from 'lucide-react'
 
 const CARDS = [
   {
@@ -64,6 +64,50 @@ export default function InfoSection() {
               <p className="text-sm leading-relaxed opacity-80">{card.content}</p>
             </div>
           ))}
+        </div>
+
+        {/* Datos de contacto y director */}
+        <div className="mt-14 bg-green-900 rounded-3xl p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <User className="w-5 h-5 text-green-300" />
+            </div>
+            <div>
+              <p className="text-green-300 text-xs font-semibold uppercase tracking-wide mb-0.5">Director</p>
+              <p className="font-semibold text-sm leading-snug">Mtro. Mario Edgary Vázquez López</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Phone className="w-5 h-5 text-green-300" />
+            </div>
+            <div>
+              <p className="text-green-300 text-xs font-semibold uppercase tracking-wide mb-0.5">Teléfono</p>
+              <p className="font-semibold text-sm">(777) 368-0092</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Clock className="w-5 h-5 text-green-300" />
+            </div>
+            <div>
+              <p className="text-green-300 text-xs font-semibold uppercase tracking-wide mb-0.5">Horario</p>
+              <p className="font-semibold text-sm">Turno Matutino</p>
+              <p className="text-green-200 text-xs">7:00 – 13:10 hrs</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <MapPin className="w-5 h-5 text-green-300" />
+            </div>
+            <div>
+              <p className="text-green-300 text-xs font-semibold uppercase tracking-wide mb-0.5">Dirección</p>
+              <p className="font-semibold text-sm leading-snug">Av. Temixco y No Reelección #1, Col. Centro, Emiliano Zapata, Morelos</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
