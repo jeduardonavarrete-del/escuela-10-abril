@@ -168,7 +168,7 @@ export default function BoletasPage() {
             </div>
 
             <div className="px-6 pb-4 text-xs text-gray-400">
-              Calificaciones del Ciclo Escolar 2024–2025 · ESF "10 de Abril"
+              Calificaciones del Ciclo Escolar 2025–2026 · ESF "10 de Abril"
             </div>
           </div>
         )}

@@ -41,7 +41,7 @@ export default async function CalendarioPage() {
           <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <CalendarDays className="w-7 h-7 text-green-700" />
           </div>
-          <h1 className="text-3xl font-extrabold text-gray-900">Calendario Escolar 2024–2025</h1>
+          <h1 className="text-3xl font-extrabold text-gray-900">Calendario Escolar 2025–2026</h1>
           <p className="text-gray-500 text-sm mt-2 max-w-md mx-auto">
             Fechas importantes: suspensiones, juntas de consejo técnico y entrega de boletas.
           </p>

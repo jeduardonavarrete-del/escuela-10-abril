@@ -19,7 +19,7 @@ export default function Footer() {
             </div>
             <p className="text-green-200 text-sm leading-relaxed">
               Formando ciudadanos comprometidos con su comunidad y su futuro.
-              Ciclo escolar 2024–2025.
+              Ciclo escolar 2025–2026.
             </p>
           </div>
 

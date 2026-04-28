@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
           materia_id: materiaId,
           trimestre: trimestre as '1' | '2' | '3',
           calificacion: calRaw,
-          ciclo_escolar: '2024-2025',
+          ciclo_escolar: '2025-2026',
         },
         { onConflict: 'alumno_id,materia_id,trimestre,ciclo_escolar' }
       )

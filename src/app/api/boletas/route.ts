@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     .from('calificaciones')
     .select('*, materias(*)')
     .eq('alumno_id', alumno.id)
-    .eq('ciclo_escolar', '2024-2025')
+    .eq('ciclo_escolar', '2025-2026')
 
   if (calError) {
     return NextResponse.json({ error: 'Error al obtener calificaciones.' }, { status: 500 })

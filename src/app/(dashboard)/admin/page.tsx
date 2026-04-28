@@ -31,7 +31,7 @@ export default async function AdminPage() {
     <div>
       <div className="mb-8">
         <h1 className="text-2xl font-extrabold text-gray-900">Panel General</h1>
-        <p className="text-gray-500 text-sm mt-1">Resumen del sistema — Ciclo 2024–2025</p>
+        <p className="text-gray-500 text-sm mt-1">Resumen del sistema — Ciclo 2025–2026</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">

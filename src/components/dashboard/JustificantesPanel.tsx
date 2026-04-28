@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle, XCircle, Eye, ExternalLink, Loader2, Filter } from 'lucide-react'
+import { CheckCircle, XCircle, Eye, ExternalLink, Loader2, Filter, Download } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { formatDate, getEstadoBadgeColor } from '@/lib/utils'
+import { generarJustificantePDF } from '@/lib/pdf/generarJustificante'
 import type { Justificante, EstadoJustificante } from '@/types'
 
 interface Props {
-  initialData: (Justificante & { alumnos?: { nombre: string; apellido_paterno: string; apellido_materno?: string; grupo: string; grado: string } })[]
+  initialData: (Justificante & { alumnos?: { nombre: string; apellido_paterno: string; apellido_materno?: string; grupo: string; grado: string; curp: string; numero_lista?: number } })[]
 }
 
 type FiltroEstado = 'Todos' | EstadoJustificante
@@ -132,6 +133,33 @@ export default function JustificantesPanel({ initialData }: Props) {
                         >
                           <Eye className="w-4 h-4" />
                         </button>
+                        {j.estado === 'Aprobado' && j.alumnos && (
+                          <button
+                            onClick={() => generarJustificantePDF({
+                              folio: j.folio,
+                              alumno: {
+                                nombre: j.alumnos!.nombre,
+                                apellido_paterno: j.alumnos!.apellido_paterno,
+                                apellido_materno: j.alumnos!.apellido_materno,
+                                grado: j.alumnos!.grado,
+                                grupo: j.alumnos!.grupo,
+                                curp: j.alumnos!.curp,
+                                numero_lista: j.alumnos!.numero_lista,
+                              },
+                              nombre_padre: j.nombre_padre,
+                              telefono: j.telefono,
+                              fecha_inicio: j.fecha_inicio,
+                              fecha_fin: j.fecha_fin,
+                              motivo: j.motivo,
+                              estado: j.estado,
+                              created_at: j.created_at,
+                            })}
+                            className="p-1.5 rounded-lg hover:bg-green-50 text-green-700"
+                            title="Descargar justificante PDF"
+                          >
+                            <Download className="w-4 h-4" />
+                          </button>
+                        )}
                         {j.estado === 'En revisión' && (
                           <>
                             <button
@@ -213,6 +241,33 @@ export default function JustificantesPanel({ initialData }: Props) {
                 </div>
               )}
             </dl>
+
+            {selected.estado === 'Aprobado' && selected.alumnos && (
+              <button
+                onClick={() => generarJustificantePDF({
+                  folio: selected.folio,
+                  alumno: {
+                    nombre: selected.alumnos!.nombre,
+                    apellido_paterno: selected.alumnos!.apellido_paterno,
+                    apellido_materno: selected.alumnos!.apellido_materno,
+                    grado: selected.alumnos!.grado,
+                    grupo: selected.alumnos!.grupo,
+                    curp: selected.alumnos!.curp,
+                    numero_lista: selected.alumnos!.numero_lista,
+                  },
+                  nombre_padre: selected.nombre_padre,
+                  telefono: selected.telefono,
+                  fecha_inicio: selected.fecha_inicio,
+                  fecha_fin: selected.fecha_fin,
+                  motivo: selected.motivo,
+                  estado: selected.estado,
+                  created_at: selected.created_at,
+                })}
+                className="mt-5 w-full flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold py-2.5 rounded-xl text-sm transition-colors"
+              >
+                <Download className="w-4 h-4" /> Descargar justificante PDF
+              </button>
+            )}
 
             {selected.estado === 'En revisión' && (
               <div className="mt-5">

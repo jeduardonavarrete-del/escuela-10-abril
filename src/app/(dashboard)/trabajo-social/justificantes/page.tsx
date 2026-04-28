@@ -5,7 +5,7 @@ async function getJustificantes() {
   const supabase = await createClient()
   const { data } = await supabase
     .from('justificantes')
-    .select('*, alumnos(nombre, apellido_paterno, apellido_materno, grupo, grado)')
+    .select('*, alumnos(nombre, apellido_paterno, apellido_materno, grupo, grado, curp, numero_lista)')
     .order('created_at', { ascending: false })
   return data ?? []
 }

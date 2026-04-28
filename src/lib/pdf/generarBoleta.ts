@@ -25,7 +25,7 @@ export function generarBoletaPDF(alumno: BolетaAlumno) {
   doc.setFontSize(9)
   doc.setFont('helvetica', 'normal')
   doc.text('Emiliano Zapata, Morelos  |  Turno Matutino', W / 2, 22, { align: 'center' })
-  doc.text('BOLETA DE CALIFICACIONES — Ciclo Escolar 2024–2025', W / 2, 30, { align: 'center' })
+  doc.text('BOLETA DE CALIFICACIONES — Ciclo Escolar 2025–2026', W / 2, 30, { align: 'center' })
 
   // --- Datos del alumno ---
   let y = 50
@@ -134,5 +134,5 @@ export function generarBoletaPDF(alumno: BolетaAlumno) {
     { align: 'center' }
   )
 
-  doc.save(`Boleta_${alumno.curp}_2024-2025.pdf`)
+  doc.save(`Boleta_${alumno.curp}_2025-2026.pdf`)
 }
