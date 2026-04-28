@@ -14,11 +14,11 @@ interface Evento {
 }
 
 const TIPOS = [
-  { label: 'Suspensión', color: '#dc2626' },
-  { label: 'CTE',        color: '#2563eb' },
-  { label: 'Festivo',    color: '#ea580c' },
-  { label: 'Evento',     color: '#15803d' },
-  { label: 'Aviso',      color: '#7c3aed' },
+  { label: 'Suspension',      display: 'Suspensión',     color: '#dc2626' },
+  { label: 'Consejo Tecnico', display: 'CTE',            color: '#2563eb' },
+  { label: 'Festivo',         display: 'Festivo',        color: '#ea580c' },
+  { label: 'Evento',          display: 'Evento',         color: '#15803d' },
+  { label: 'Entrega Boletas', display: 'Entrega Boletas', color: '#7c3aed' },
 ]
 
 const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
@@ -40,7 +40,7 @@ export default function CalendarioAdmin() {
   const [eventos, setEventos] = useState<Evento[]>([])
   const [loading, setLoading] = useState(false)
   const [modal, setModal]   = useState<{ date: string; eventos: Evento[] } | null>(null)
-  const [form, setForm]     = useState({ titulo: '', descripcion: '', tipo: 'Evento', multiDay: false, fecha_fin: '' })
+  const [form, setForm]     = useState({ titulo: '', descripcion: '', tipo: 'Evento' as string, multiDay: false, fecha_fin: '' })
   const [saving, setSaving] = useState(false)
 
   const fetchEventos = useCallback(async () => {
@@ -71,7 +71,7 @@ export default function CalendarioAdmin() {
   async function guardar() {
     if (!form.titulo.trim() || !modal) return
     setSaving(true)
-    const color = TIPOS.find(t => t.label === form.tipo)?.color ?? '#15803d'
+    const color = TIPOS.find(t => t.label === form.tipo || t.display === form.tipo)?.color ?? '#15803d'
     await fetch('/api/eventos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -186,7 +186,7 @@ export default function CalendarioAdmin() {
         {TIPOS.map(t => (
           <div key={t.label} className="flex items-center gap-1.5">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: t.color }} />
-            <span className="text-xs text-gray-600">{t.label}</span>
+            <span className="text-xs text-gray-600">{t.display}</span>
           </div>
         ))}
       </div>
@@ -242,7 +242,7 @@ export default function CalendarioAdmin() {
                 onChange={e => setForm(f => ({ ...f, tipo: e.target.value }))}
                 className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-green-500 bg-white"
               >
-                {TIPOS.map(t => <option key={t.label} value={t.label}>{t.label}</option>)}
+                {TIPOS.map(t => <option key={t.label} value={t.label}>{t.display}</option>)}
               </select>
               <textarea
                 placeholder="Descripción (opcional)"
