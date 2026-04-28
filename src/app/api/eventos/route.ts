@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   const year = request.nextUrl.searchParams.get('year')
   const month = request.nextUrl.searchParams.get('month')
 
-  const supabase = createAdminClient()
+  const supabase = await createAdminClient()
 
   let query = supabase
     .from('eventos_calendario')
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Faltan campos requeridos.' }, { status: 400 })
   }
 
-  const supabase = createAdminClient()
+  const supabase = await createAdminClient()
   const { data, error } = await supabase
     .from('eventos_calendario')
     .insert({
